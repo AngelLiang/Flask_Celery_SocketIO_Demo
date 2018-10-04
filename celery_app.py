@@ -1,6 +1,9 @@
 # coding=utf-8
 """
-celery worker -A celery_app.celery --loglevel=info
+consloe 1:
+    celery worker -A celery_app.celery --loglevel=info
+console 2: 
+    celery flower -A celery_app.celery --address=127.0.0.1 --port=5555
 """
 
 import time
