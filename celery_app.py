@@ -39,9 +39,3 @@ def background_task():
         'data', {'data': 'Task complete!'},
         namespace=namespace
     )
-
-
-@celery.task
-def async_task():
-    print('Async!')
-    time.sleep(5)

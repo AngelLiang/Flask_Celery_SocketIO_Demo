@@ -32,27 +32,11 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/async')
-def async_():
-    from celery_app import async_task
-    async_task.delay()
-    return 'Task complete!'
-
-
 @app.route('/task')
 def start_background_task():
     from celery_app import background_task
     background_task.delay()
     return 'Started'
-
-
-@app.route('/send')
-def send():
-    socketio.emit(
-        'data', {'data': 'test'},
-        namespace=namespace
-    )
-    return 'Success'
 
 
 if __name__ == '__main__':
