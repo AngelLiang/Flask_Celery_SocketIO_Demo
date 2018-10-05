@@ -29,15 +29,15 @@ celery = make_celery(app)
 
 @celery.task
 def background_task():
-    from flask_app import socketio, namespace
+    from flask_app import socketio
     socketio.emit(
         'data', {'data': 'Task starting...'},
-        namespace=namespace
+        namespace='/task'
     )
     time.sleep(3)
     socketio.emit(
         'data', {'data': 'Task complete!'},
-        namespace=namespace
+        namespace='/task'
     )
 
 
