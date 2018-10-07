@@ -39,8 +39,13 @@ PYTHONSCRIPTPATH = os.path.join(INSTDIR, '.venv', 'Scripts')
 # not the parent directory
 PROJECTDIR = 'celery_app.celery'
 
+# The logging directory
+LOG_DIR = os.path.join(INSTDIR, 'logs')
+if not os.path.exists(LOG_DIR):
+    os.mkdir(LOG_DIR)
+
 logging.basicConfig(
-    filename=os.path.join(INSTDIR, 'celery_service.log'),
+    filename=os.path.join(LOG_DIR, 'celery_service.log'),
     level=logging.DEBUG,
     format='[%(asctime)-15s: %(levelname)-7.7s] %(message)s'
 )
@@ -73,7 +78,7 @@ class CeleryService(win32serviceutil.ServiceFramework):
         command = '"{celery_path}" -A {proj_dir} worker -f "{log_path}" -l info'.format(
             celery_path=os.path.join(PYTHONSCRIPTPATH, 'celery.exe'),
             proj_dir=PROJECTDIR,
-            log_path=os.path.join(INSTDIR, 'celery.log'))
+            log_path=os.path.join(LOG_DIR, 'celery.log'))
         logging.info('command: ' + command)
         args = shlex.split(command)
         proc = subprocess.Popen(args)
