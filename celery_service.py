@@ -34,9 +34,7 @@ INSTDIR = os.path.dirname(os.path.realpath(__file__))
 # If it is already in system PATH, then it can be set as ''
 PYTHONSCRIPTPATH = os.path.join(INSTDIR, '.venv', 'Scripts')
 
-# The directory name of django project
-# Note: it is the directory at the same level of manage.py
-# not the parent directory
+# The directory name of project
 PROJECTDIR = 'celery_app.celery'
 
 # The logging directory
