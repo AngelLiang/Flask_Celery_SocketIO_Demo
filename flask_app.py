@@ -62,4 +62,4 @@ def handle_request_with_namespace(message):
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, debug=True)
